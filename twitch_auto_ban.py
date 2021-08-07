@@ -20,10 +20,13 @@ ban_message = "spam bot"
 ### - No need to modify anything below this line ###
 ####################################################
 
-
 #  Twitch IRC chat server details
 HOST = "irc.twitch.tv"
 PORT = 6667
+
+#  Check if banlist.txt exists
+if not os.path.isfile("banlist.txt"):
+	quit("banlist.txt not found")
 
 #  Connect to IRC and send user/auth info
 con = socket.socket()
@@ -32,10 +35,6 @@ con.send(str.encode("USER " + HOST + "\r\n"))
 con.send(str.encode("PASS " + auth_token + "\r\n"))
 con.send(str.encode("NICK " + NICK.lower() + "\r\n"))
 con.send(str.encode("JOIN " + CHAN.lower() + "\r\n"))
-
-#  Check if banlist.txt exists
-if not os.path.isfile("banlist.txt"):
-	quit("banlist.txt not found")
 
 #  Send IRC message with a ban command for each username in the input file
 with open("banlist.txt", "r") as infile:
