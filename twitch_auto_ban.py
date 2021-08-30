@@ -43,7 +43,7 @@ with open("banlist.txt", "r") as infile:
 
         print(f"Banning {name.strip()}")
         con.send(str.encode(f"PRIVMSG {CHAN.lower()} :/ban {name.strip()} {ban_message}\r\n"))
-        time.sleep(0.1)
+        time.sleep(0.32)
 
 con.close()
 
