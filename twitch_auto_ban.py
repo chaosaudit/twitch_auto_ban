@@ -43,7 +43,7 @@ with open("banlist.txt", "r") as infile:
 
         print(f"Banning {name.strip()}")
         con.send(str.encode(f"PRIVMSG {CHAN.lower()} :/ban {name.strip()} {ban_message}\r\n"))
-        time.sleep(0.32)
+        time.sleep(0.32) # mods can send a max of 100 messages per 30 seconds 
 
 con.close()
 
